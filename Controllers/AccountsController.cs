@@ -11,11 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace API_Users.Controllers
 {
     [Route("[controller]")]
-    public class AccountController : Controller
+    public class AccountsController : Controller
     {
         private readonly UserRepository _db;
 
-        public AccountController(UserRepository repo)
+        public AccountsController(UserRepository repo)
         {
             _db = repo;
         }
@@ -23,6 +23,7 @@ namespace API_Users.Controllers
         [HttpPost("register")]
         public async Task<UserReturnModel> Register([FromBody]RegisterUserModel creds)
         {
+            
             if (ModelState.IsValid)
             {
                 UserReturnModel user = _db.Register(creds);
@@ -51,6 +52,15 @@ namespace API_Users.Controllers
             }
             return null;
         }
+
+        [HttpDelete("logout")]
+      public async void Logout()
+      {
+       
+          await HttpContext.SignOutAsync();
+       
+      }
+      
         [HttpGet("authenticate")]
         public UserReturnModel Authenticate()
         {
