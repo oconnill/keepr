@@ -18,7 +18,7 @@ namespace API_Users.Repositories
         }
 
         // Find One Find Many add update delete
-        public IEnumerable<Keep> GetAll()
+        public IEnumerable<Keep> GetAll(int Userid)
         {
             return _db.Query<Keep>("SELECT * FROM Keeps");
         }

@@ -107,8 +107,11 @@ var store = new vuex.Store({
         })
     },
     getVaults({ commit, dispatch }) {
-      api('uservaults') // api('boards')
+      debugger
+      var id = 13
+      api('vaults/user/' + id) 
         .then(res => {
+          console.log('Response to GetVaults: ', res)
           commit('setVaults', res.data.data)
         })
         .catch(err => {
@@ -159,13 +162,12 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    createKeep({ commit, dispatch }, payload) {
-      payload.keep.vaultId = payload.id
-      console.log('keep: ', payload.list)
-      api.post('keeps/', payload.list)
+    createKeep({ commit, dispatch }, keep) {
+      debugger
+      api.post('keeps', keep)
         .then(res => {
-          dispatch('getKeeps', payload.list.vaultId)
-          console.log('response to createKeep: ', res)
+          console.log('res to create keep: ', res)
+          dispatch('getKeeps')
         })
         .catch(err => {
           commit('handleError', err)

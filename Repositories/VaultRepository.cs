@@ -18,9 +18,10 @@ namespace API_Users.Repositories
         }
 
         // Find One Find Many add update delete
-        public IEnumerable<Vault> GetAll()
+        public IEnumerable<Vault> GetAll(int Userid)
         {
-            return _db.Query<Vault>("SELECT * FROM Vaults");
+            var vaults = _db.Query<Vault>($"SELECT * FROM Vaults WHERE Userid = {Userid}", Userid);
+            return vaults;
         }
 
         public Vault GetById(int id)
