@@ -29,7 +29,7 @@ var store = new vuex.Store({
   },
   mutations: {
     setVaults(state, data) {
-      state.boards = data
+      state.vaults = data
     },
     handleError(state, err) {
       state.error = err
@@ -43,12 +43,9 @@ var store = new vuex.Store({
       console.log('activeBoard: ', state.activeBoard)
     },
     setKeeps(state, data) {
-      state.lists = data
+      debugger
+      state.keeps = data
     },
-    setKeeps(state, payload) {
-      vue.set(state.tasks, payload.listId, payload.data)
-
-    }
 },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
@@ -60,7 +57,7 @@ var store = new vuex.Store({
           commit('setActiveUser', res.data)
 
           router.push({ name: "Keeps" })
-          debugger
+
         })
         .catch(err => {
           commit('handleError', err)
@@ -107,12 +104,11 @@ var store = new vuex.Store({
         })
     },
     getVaults({ commit, dispatch }) {
-      debugger
       var id = 13
       api('vaults/user/' + id) 
         .then(res => {
           console.log('Response to GetVaults: ', res)
-          commit('setVaults', res.data.data)
+          commit('setVaults', res.data)
         })
         .catch(err => {
           commit('handleError', err)
@@ -131,7 +127,6 @@ var store = new vuex.Store({
         })
     },
     createVault({ commit, dispatch }, vault) {
-      debugger
       api.post('vaults', vault)
         .then(res => {
           console.log('res to create vault: ', res)
@@ -152,18 +147,18 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    getKeeps({ commit, dispatch }, id) {
-      api(`vaults/${id}/keeps`)
+    getKeeps({ commit, dispatch }) {
+      var id = 13
+      api('keeps/user/' + id) 
         .then(res => {
-          console.log('response to getVaults: ', res)
-          commit('setVaults', res.data.data)
+          console.log('Response to GetKeeps: ', res)
+          commit('setKeeps', res.data)
         })
         .catch(err => {
           commit('handleError', err)
         })
     },
     createKeep({ commit, dispatch }, keep) {
-      debugger
       api.post('keeps', keep)
         .then(res => {
           console.log('res to create keep: ', res)

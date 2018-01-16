@@ -1,51 +1,44 @@
-<v-form>
+<template>
 
-    <div>
-        <v-btn type="button" flat>Add Keep</v-btn>
+  <div>
+    <v-flex xs12>
+      <h2>My Keeps</h2>
+    </v-flex>
+    <div v-for="keep in keeps">
+      <v-flex xs6>
+        <div>{{keep.name}}</div>
+        <div>{{keep.keepImage}}</div>
+
+      </v-flex>
     </div>
-    <div>
-        <v-btn type="button" @click="createVault()" flat>Add Vault</v-btn>
-    </div>
-    <div>
-        <v-btn @click="logout()" type="button" flat>Logout</v-btn>
-    </div>
-</v-form>
-      
-      
-      <script>
- export default {
-  name: 'boards',
-  data() {
-    return {
-      newVault: {}
-    }
-  },
-  mounted() {
-    this.$store.dispatch('getVaults')
-  },
-  computed: {
-    vaults() {
-      return this.$store.state.vaults
+  </div>
+</template>
+
+
+</template>
+<script>
+  export default {
+    name: 'Keeps',
+    data() {
+      return {
+        newBoard: {}
+      }
     },
-    activeVault() {
-      return this.$store.state.activeVault
+    mounted() {
     },
-    // lists() {
-    //   return this.$store.state.lists
-    // },
-  },
-  methods: {
-    createVault() {
-      this.$store.dispatch('createVault', this.newVault)
-      this.newVault = {};
+    computed: {
+      keeps() {
+        return this.$store.state.keeps
+      },
     },
-    removeBoard(vault) {
-      this.$store.dispatch('removeVault', vault)
-    },
-    getVault(id) {
-      console.log('get vault in component')
-      this.$store.dispatch('getVault', id)
+    methods: {
+      removeBoard(board) {
+        this.$store.dispatch('removeBoard', board)
+      },
+      getVault(id) {
+        console.log('get vault in compnent')
+        this.$store.dispatch('getVault', id)
+      }
     }
   }
-}
-          </script>
+</script>

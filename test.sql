@@ -62,3 +62,6 @@
 
 -- DELETE from vaults WHERE id = 2;
 -- DELETE FROM users WHERE id = 1;
+
+-- ALTER TABLE keeps Drop COLUMN keepcount 
+-- ALTER TABLE keeps ADD COLUMN keepId int(11)

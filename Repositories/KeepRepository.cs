@@ -31,14 +31,13 @@ namespace API_Users.Repositories
         public Keep Add(Keep keep)
         {
 
-            int id = _db.ExecuteScalar<int>("INSERT INTO Keeps (Title, Image, Description, VaultId, KeepId, KeepCount)"
-                        + " VALUES(@Title, @Image, @Description, @VaultId, @KeepId, @KeepCount); SELECT LAST_INSERT_ID()", new
+            int id = _db.ExecuteScalar<int>("INSERT INTO Keeps (Name, keepImage, Description, UserId, KeepCount)"
+                        + " VALUES(@Name, @keepImage, @Description, @UserId, @KeepCount); SELECT LAST_INSERT_ID()", new
                         {
-                            keep.Title,
-                            keep.Image,
+                            keep.Name,
+                            keep.keepImage,
                             keep.Description,
-                            keep.VaultId,
-                            keep.KeepId,
+                            keep.UserId,
                             keep.KeepCount
                         });
             keep.Id = id;

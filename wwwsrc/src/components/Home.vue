@@ -9,21 +9,23 @@
     </v-form>
 
     <v-form @submit.prevent="createKeep()">
-      <v-text-field label="Title" v-model="newKeep.title" required></v-text-field>
+      <v-text-field label="Title" v-model="newKeep.name" required></v-text-field>
       <v-text-field label="Description" v-model="newKeep.description" required></v-text-field>
-      <v-text-field label="Image" v-model="newKeep.image" required></v-text-field>
+      <v-text-field label="Image" v-model="newKeep.keepImage" required></v-text-field>
       <div>
         <v-btn type="submit" flat>Submit</v-btn>
       </div>
     </v-form>
 
     <vaults></vaults>
+    <keeps></keeps>
 
   </div>
 </template>
 
 <script>
   import Vaults from './Vaults'
+  import Keeps from './Keeps'
   export default {
     name: 'Home',
     data() {
@@ -34,9 +36,9 @@
           userid: ''
         },
         newKeep: {
-          title: '',
+          name: '',
           description: '',
-          image: '',
+          keepImage: '',
           keepId: '',
           keepCount: 0,
         },
@@ -44,9 +46,11 @@
     },
     components: {
       Vaults,
+      Keeps,
     },
     mounted() {
       this.$store.dispatch('getVaults')
+      this.$store.dispatch('getKeeps')
     },
     computed: {
       vaults() {
@@ -77,9 +81,9 @@
         this.newKeep.userid = this.activeUser.id
         this.$store.dispatch('createKeep', this.newKeep)
         this.newVault = {
-          title: '',
+          name: '',
           description: '',
-          image: '',
+          keepImage: '',
           keepId: '',
           keepCount: 0,
         }

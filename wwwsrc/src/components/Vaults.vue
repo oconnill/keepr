@@ -1,9 +1,18 @@
 <template>
 
-             
+      <div>      
   <v-flex xs12>
       <h2>My Vaults</h2>
-  </v-flex>
+    </v-flex>
+      <div  v-for="vault in vaults">
+      <v-flex xs6>
+      <div>{{vault.name}}</div>
+   
+    </v-flex>
+  </div>
+</div> 
+  </template>
+ 
 
 </template>
 <script>
