@@ -64,7 +64,6 @@
     },
     methods: {
       createVault() {
-        debugger
         this.newVault.userid = this.activeUser.id
         this.$store.dispatch('createVault', this.newVault)
         this.newVault = {

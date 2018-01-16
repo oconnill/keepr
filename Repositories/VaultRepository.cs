@@ -32,11 +32,12 @@ namespace API_Users.Repositories
         public Vault Add(Vault vault)
         {
 
-            int id = _db.ExecuteScalar<int>("INSERT INTO Vaults (Name, Description)"
-                        + " VALUES(@Name, @Description); SELECT LAST_INSERT_ID()", new
+            int id = _db.ExecuteScalar<int>("INSERT INTO Vaults (Name, Description, UserId)"
+                        + " VALUES(@Name, @Description, @UserId); SELECT LAST_INSERT_ID()", new
                         {
                             vault.Name,
                             vault.Description,
+                            vault.UserId
                         });
             vault.Id = id;
             return vault;
