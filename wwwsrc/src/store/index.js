@@ -43,7 +43,6 @@ var store = new vuex.Store({
       console.log('activeBoard: ', state.activeBoard)
     },
     setKeeps(state, data) {
-      debugger
       state.keeps = data
     },
 },
@@ -168,10 +167,11 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    removeKeep({ commit, dispatch }, list) {
-      api.delete('keeps/' + keep._id)
+    deleteKeep({ commit, dispatch }, keep) {
+      debugger
+      api.delete('keeps/' + keep.id)
         .then(res => {
-          dispatch('getKeeps', keep.vaultId)
+          dispatch('getKeeps')
         })
         .catch(err => {
           commit('handleError', err)

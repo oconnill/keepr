@@ -7,8 +7,10 @@
     <div v-for="keep in keeps">
       <v-flex xs6>
         <div>{{keep.name}}</div>
-        <div>{{keep.keepImage}}</div>
-
+        <img :src="keep.keepImage">
+        <div>
+          <v-btn @click="deleteKeep(keep)" type="button" flat>Delete</v-btn>
+        </div>
       </v-flex>
     </div>
   </div>
@@ -32,8 +34,8 @@
       },
     },
     methods: {
-      removeBoard(board) {
-        this.$store.dispatch('removeBoard', board)
+      deleteKeep(keep) {
+        this.$store.dispatch('deleteKeep', keep)
       },
       getVault(id) {
         console.log('get vault in compnent')
