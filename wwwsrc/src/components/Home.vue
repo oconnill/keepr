@@ -13,7 +13,11 @@ export default {
   name: 'Home',
   data() {
     return {
-      newVault: {}
+      newVault: {
+          name: '',
+          description: '',
+          userId: ''
+        }
     }
   },
   mounted() {
@@ -26,6 +30,9 @@ export default {
     activeVault() {
       return this.$store.state.activeVault
     },
+    activeUser() {
+        return this.$store.state.activeUser
+      },
     // lists() {
     //   return this.$store.state.lists
     // },
@@ -33,8 +40,11 @@ export default {
   methods: {
     createVault() {
       debugger
-      this.$store.activeUser.id = this.newVault.creatorID
-      this.$store.dispatch('createVault', this.newVault)
+      this.newVault.userid = this.activeUser.id
+      this.$store.dispatch('createVault', {
+        user: this.activeUser,
+        data: this.newVault
+      })
       this.newVault = {};
     },
     removeBoard(vault) {
