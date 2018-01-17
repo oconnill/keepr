@@ -7,7 +7,7 @@
       <div  v-for="vault in vaults">
       <v-flex xs6>
       <div>{{vault.name}}</div>
-      <v-btn @click="getVaultKeep(vault.id)" type="submit" flat>GO</v-btn>
+        <v-btn @click="getVaultKeep(vault.id)" type="submit" flat>GO</v-btn>
     </v-flex>
   </div>
 </div> 

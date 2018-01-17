@@ -1,41 +1,22 @@
 <template>
-    <div class="container">
-
-        <!--Active Board: {{board}}-->
-        <v-flex xs6>
-            <router-link class="linked-text" :to="'/'">
-                <p>Back to Home</p>
-            </router-link>
-            <h1>{{vault.name}}</h1>
-            <p>{{vault.description}}</p>
-            <div class="add-list-form">
-                <form type="submit" @submit.prevent="createKeep(keep._id)">
-                    <div class="form-group">
-                        <input name="name" type="text" class="form-control" placeholder="Name" v-model="newKeep.name">
+        <div>
+                <v-flex xs12>
+                  <h2>VIEW VAULT</h2>
+                </v-flex>
+                <div v-for="activeVaultKeep in activeVaultKeeps">
+                  <v-flex xs6>
+                    <div>{{activeVaultKeep.data}}</div>
+                    <img :src="keep.keepImage">
+                    <div>
+                      <v-btn @click="deleteKeep(keep)" type="button" flat>Delete</v-btn>
                     </div>
-                    <div class="form-group">
-                        <input name="image" type="text" class="form-control" placeholder="Image" v-model="newKeep.image">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success navbar-btn">+ Keep</button>
-                    </div>
-                </form>
-        </v-flex>
-
-        </div>
-        <div class="row lists-row">
-
-            <v-flex v-for="keep in keeps">
-                <span class="glyphicon glyphicon-remove-circle pull-right" @click="removeList(list)"></span>
-                <list :name="keep.name" :image="keep.image" :listId="keep._id" :boardId="vault._id"></list>
-            </v-flex>
-
-        </div>
-    </div>
+                  </v-flex>
+                </div>
+              </div>
 </template>
 
 <script>
-    import keep from './Keep'
+
     export default {
         name: 'Vault',
         data() {
@@ -64,10 +45,12 @@
             },
             keeps() {
                 return this.$store.state.keeps
-            }
+            },
+            activeVaultKeep() {
+        return this.$store.state.activeVaultKeeps
+      }
         },
         components: {
-            keep
         }
     }
 </script>

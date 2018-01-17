@@ -25,7 +25,8 @@ var store = new vuex.Store({
     activeVaults: {},
     keeps: [],
     error: {},
-    activeUser: {}
+    activeUser: {},
+    activeVaultKeeps: []
   },
   mutations: {
     setVaults(state, data) {
@@ -45,6 +46,10 @@ var store = new vuex.Store({
     setKeeps(state, data) {
       state.keeps = data
     },
+    setActiveVaultKeep(state, data) {
+      state.activeVaultKeeps = data
+      console.log('VaultKeeps: ', state.activeVaultKeeps)
+    }
 },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
@@ -116,8 +121,7 @@ var store = new vuex.Store({
       api('vaultkeeps/user/' + vaultid)
         .then(res => {
           console.log('res to get vault: ', res)
-          dispatch('getLists', id)
-          commit('setActiveVault', res.data.data)
+          commit('setActiveVaultKeep', res.data)
         })
         .catch(err => {
           commit('handleError', err)

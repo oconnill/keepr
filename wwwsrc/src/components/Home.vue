@@ -19,6 +19,7 @@
 
     <vaults></vaults>
     <keeps></keeps>
+    <vault></vault>
 
   </div>
 </template>
@@ -26,6 +27,7 @@
 <script>
   import Vaults from './Vaults'
   import Keeps from './Keeps'
+  import Vault from './Vault'
   export default {
     name: 'Home',
     data() {
@@ -47,6 +49,7 @@
     components: {
       Vaults,
       Keeps,
+      Vault,
     },
     mounted() {
       // this.$store.dispatch('getVaults')
