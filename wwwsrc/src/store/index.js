@@ -87,6 +87,7 @@ var store = new vuex.Store({
           console.log('Response to logout: ', res)
           commit('setActiveUser', {})
           commit('vaults', {})
+          commit('activeVaults', {})
           router.push({ name: "Login" })
         })
         .catch(err => {
@@ -162,6 +163,16 @@ var store = new vuex.Store({
     },
     getKeeps({ commit, dispatch }, id) {
       api('keeps/user/' + id) 
+        .then(res => {
+          console.log('Response to GetKeeps: ', res)
+          commit('setKeeps', res.data)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    getAllKeeps({ commit, dispatch }) {
+      api('keeps') 
         .then(res => {
           console.log('Response to GetKeeps: ', res)
           commit('setKeeps', res.data)

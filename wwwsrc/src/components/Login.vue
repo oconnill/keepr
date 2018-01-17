@@ -1,4 +1,5 @@
 <template>
+    <div>
     <v-form v-if="loginFormActive" v-model="valid" @submit.prevent="submitLogin()">
         <v-text-field label="E-mail" v-model="login.email" :rules="emailRules" :counter="10" required></v-text-field>
         <v-text-field label="Password" v-model="login.password" :rules="passwordRules" required></v-text-field>
@@ -20,7 +21,18 @@
             <v-btn @click="logout()" type="button" flat>Logout</v-btn>
         </div>
     </v-form>
-
+    <div>
+            <v-flex xs12>
+                <h2>KEEPS OF THE WORLD!!!</h2>
+            </v-flex>
+            <div v-for="keep in keeps">
+                <v-flex xs4>
+                    <div>{{keep.name}}</div>
+                    <img :src="keep.keepImage">
+                </v-flex>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
     export default {
@@ -55,6 +67,11 @@
                 loginFormActive: true
             }
         },
+        mounted() {
+      // this.$store.dispatch('getVaults')
+      this.$store.dispatch('getAllKeeps')
+      // this.$store.dispatch('getActiveUser')
+    },
         methods: {
             toggleFormState() {
                 this.loginFormActive = !this.loginFormActive
@@ -78,6 +95,11 @@
             logout() {
                 debugger
                 this.$store.dispatch('logout')
+            }
+        },
+        computed: {
+            keeps() {
+                return this.$store.state.keeps
             }
         }
     }

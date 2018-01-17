@@ -28,6 +28,12 @@ namespace API_Users.Repositories
             var keeps = _db.Query<Keep>($"SELECT * FROM Keeps WHERE Userid = {Userid}", Userid);
             return keeps;
         }
+                
+        public IEnumerable<Keep> GetAllLogin()
+        {
+            var keeps = _db.Query<Keep>($"SELECT * FROM Keeps");
+            return keeps;
+        }
 
 
         public Keep GetById(int id)

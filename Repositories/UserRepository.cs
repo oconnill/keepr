@@ -69,7 +69,13 @@ namespace API_Users.Repositories
             User savedUser = _db.QueryFirstOrDefault<User>(@"
             SELECT * FROM users WHERE id = @id
             ", new { id });
+            if (savedUser == null)
+            {
+                return null;
+            }
             return savedUser.GetReturnModel();
+            
+            
         }
 
         internal UserReturnModel UpdateUser(UserReturnModel user)

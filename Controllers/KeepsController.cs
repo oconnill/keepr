@@ -27,6 +27,12 @@ namespace API_Users.Controllers
             return db.GetAll(userId);
         }
 
+        [HttpGet]
+        public IEnumerable<Keep> GetAllLogin()
+        {
+            return db.GetAllLogin();
+        }
+      
         // GET api/values/5
         [HttpGet("{id}")]
         public Keep Get(int id)
