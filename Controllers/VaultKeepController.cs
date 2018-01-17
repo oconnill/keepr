@@ -22,7 +22,7 @@ namespace API_Users.Controllers
 
         // GET api/vaults
         [HttpGet("user/{userId}")]
-        public IEnumerable<VaultKeep> GetAll(int userId)
+        public IEnumerable<Keep> GetAll(int userId)
         {
             return db.GetAll(userId);
         }

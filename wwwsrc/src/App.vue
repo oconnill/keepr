@@ -48,7 +48,8 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-align: center;
-      color: #fff;
+      color: red;
+      background-color: aqua;
       margin-top: 60px;
       /*background: #334034;*/
     }

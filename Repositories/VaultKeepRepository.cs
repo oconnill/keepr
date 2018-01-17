@@ -18,10 +18,11 @@ namespace API_Users.Repositories
         }
 
         // Find One Find Many add update delete
-        public IEnumerable<VaultKeep> GetAll(int Userid)
+        public IEnumerable<Keep> GetAll(int id)
         {
-            var vaultkeeps = _db.Query<VaultKeep>($"SELECT * FROM VaultKeeps WHERE Userid = {Userid}", Userid);
-            return vaultkeeps;
+            return _db.Query<Keep>($@"SELECT * FROM vaultkeeps vk
+                                                   INNER JOIN keeps k ON k.id = vk.keepId
+                                                   WHERE (vaultId = {id})", id);
         }
 
         public VaultKeep GetById(int id)

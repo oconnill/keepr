@@ -7,7 +7,7 @@
       <div  v-for="vault in vaults">
       <v-flex xs6>
       <div>{{vault.name}}</div>
-   
+      <v-btn @click="getVaultKeep(vault.id)" type="submit" flat>GO</v-btn>
     </v-flex>
   </div>
 </div> 
@@ -40,9 +40,9 @@ export default {
     removeBoard(board) {
       this.$store.dispatch('removeBoard', board)
     },
-    getVault(id) {
+    getVaultKeep(vaultid) {
       console.log('get vault in compnent')
-      this.$store.dispatch('getVault', id)
+      this.$store.dispatch('getVaultKeep', vaultid)
     }
   }
 }

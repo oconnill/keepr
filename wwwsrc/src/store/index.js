@@ -111,9 +111,9 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    getVault({ commit, dispatch }, id) {
-      console.log('get vault in store')
-      api('vaults/' + id)
+    getVaultKeep({ commit, dispatch }, vaultid) {
+      console.log('get vaultkeep by vault id')
+      api('vaultkeeps/user/' + vaultid)
         .then(res => {
           console.log('res to get vault: ', res)
           dispatch('getLists', id)
