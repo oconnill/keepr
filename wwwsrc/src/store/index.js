@@ -145,7 +145,6 @@ var store = new vuex.Store({
         })
     },
     getKeeps({ commit, dispatch }, id) {
-      debugger
       api('keeps/user/' + id) 
         .then(res => {
           console.log('Response to GetKeeps: ', res)

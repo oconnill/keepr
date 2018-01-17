@@ -1,4 +1,5 @@
 <template>
+  <v-app>
   <v-container>
     <div id="app">
       <div class="text-right logout-bar" v-if="activeUser.hasOwnProperty('username')">
@@ -9,6 +10,7 @@
       <router-view></router-view>
     </div>
   </v-container>
+</v-app>
   </template>
   
   <script>
