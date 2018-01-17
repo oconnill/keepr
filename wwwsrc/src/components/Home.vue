@@ -49,8 +49,9 @@
       Keeps,
     },
     mounted() {
-      this.$store.dispatch('getVaults')
-      this.$store.dispatch('getKeeps')
+      // this.$store.dispatch('getVaults')
+      // this.$store.dispatch('getKeeps')
+      // this.$store.dispatch('getActiveUser')
     },
     computed: {
       vaults() {

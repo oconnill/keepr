@@ -35,7 +35,7 @@ var store = new vuex.Store({
       state.error = err
     },
     setActiveUser(state, user) {
-      state.activeUser = user
+      vue.set(state.activeUser = user)
       console.log('activeUser: ', state.activeUser)
     },
     setActiveVault(state, board) {
@@ -51,12 +51,9 @@ var store = new vuex.Store({
     addNewUser({ commit, dispatch }, user) {
       auth.post('register', user)
         .then(res => {
-
           console.log('Response to addNewUser: ', res)
           commit('setActiveUser', res.data)
-
           router.push({ name: "Keeps" })
-
         })
         .catch(err => {
           commit('handleError', err)
@@ -67,8 +64,8 @@ var store = new vuex.Store({
         .then(res => {
           console.log('Response to login: ', res)
           if(!res.data.error) {
-            debugger
             commit('setActiveUser', res.data)
+            dispatch('authenticate')
             router.push({ name: "Home" })
           } else {
             commit('handleError', res.data)
@@ -83,7 +80,7 @@ var store = new vuex.Store({
         .then(res => {
           console.log('Response to logout: ', res)
           commit('setActiveUser', {})
-          commit('setActiveBoard', {})
+          commit('vaults', {})
           router.push({ name: "Login" })
         })
         .catch(err => {
@@ -95,6 +92,8 @@ var store = new vuex.Store({
         .then(res => {
           console.log('Response to authenticate: ', res)
           commit('setActiveUser', res.data)
+          dispatch('getVaults', res.data.id)
+          dispatch('getKeeps', res.data.id)
           router.push({ name: "Home" })
         })
         .catch(err => {
@@ -102,8 +101,7 @@ var store = new vuex.Store({
           //commit('handleError', err)
         })
     },
-    getVaults({ commit, dispatch }) {
-      var id = 13
+    getVaults({ commit, dispatch }, id) {
       api('vaults/user/' + id) 
         .then(res => {
           console.log('Response to GetVaults: ', res)
@@ -129,7 +127,7 @@ var store = new vuex.Store({
       api.post('vaults', vault)
         .then(res => {
           console.log('res to create vault: ', res)
-          dispatch('getVaults')
+          dispatch('authenticate')
         })
         .catch(err => {
           commit('handleError', err)
@@ -146,8 +144,8 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    getKeeps({ commit, dispatch }) {
-      var id = 13
+    getKeeps({ commit, dispatch }, id) {
+      debugger
       api('keeps/user/' + id) 
         .then(res => {
           console.log('Response to GetKeeps: ', res)
@@ -168,7 +166,6 @@ var store = new vuex.Store({
         })
     },
     deleteKeep({ commit, dispatch }, keep) {
-      debugger
       api.delete('keeps/' + keep.id)
         .then(res => {
           dispatch('getKeeps')
