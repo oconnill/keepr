@@ -18,10 +18,17 @@ namespace API_Users.Repositories
         }
 
         // Find One Find Many add update delete
+        // public IEnumerable<Keep> GetAll(int Userid)
+        // {
+        //     return _db.Query<Keep>("SELECT * FROM Keeps");
+        // }
+
         public IEnumerable<Keep> GetAll(int Userid)
         {
-            return _db.Query<Keep>("SELECT * FROM Keeps");
+            var keeps = _db.Query<Keep>($"SELECT * FROM Keeps WHERE Userid = {Userid}", Userid);
+            return keeps;
         }
+
 
         public Keep GetById(int id)
         {
