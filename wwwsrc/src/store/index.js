@@ -133,6 +133,16 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
+    moveToVault({ commit, dispatch }, vault) {
+      api.post('vaults', vault)
+        .then(res => {
+          console.log('res to create vault: ', res)
+          dispatch('authenticate')
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
     removeVault({ commit, dispatch }, board) {
       api.delete('vaults/' + vault._id)
         .then(res => {
