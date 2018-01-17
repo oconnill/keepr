@@ -1,18 +1,18 @@
 <template>
-        <div>
-                <v-flex xs12>
-                  <h2>VIEW VAULT</h2>
-                </v-flex>
-                <div v-for="activeVaultKeep in activeVaultKeeps">
-                  <v-flex xs6>
-                    <div>{{activeVaultKeep.data}}</div>
-                    <img :src="keep.keepImage">
-                    <div>
-                      <v-btn @click="deleteKeep(keep)" type="button" flat>Delete</v-btn>
-                    </div>
-                  </v-flex>
+    <div>
+        <v-flex xs12>
+            <h2>VIEW VAULT</h2>
+        </v-flex>
+        <div v-for="Keep in vkeeps">
+            <v-flex xs6>
+                <div>{{Keep.name}}</div>
+                <img :src="Keep.keepImage">
+                <div>
+                    <v-btn @click="deleteKeep(Keep)" type="button" flat>Delete</v-btn>
                 </div>
-              </div>
+            </v-flex>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -25,7 +25,7 @@
             }
         },
         mounted() {
-            this.$store.dispatch('getVault', this.$route.params.id)
+            // this.$store.dispatch('getVault', this.$route.params.id)
         },
         methods: {
             createKeep(id) {
@@ -46,9 +46,9 @@
             keeps() {
                 return this.$store.state.keeps
             },
-            activeVaultKeep() {
-        return this.$store.state.activeVaultKeeps
-      }
+            vkeeps() {
+                return this.$store.state.activeVaultKeeps
+            }
         },
         components: {
         }
