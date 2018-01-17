@@ -133,8 +133,9 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    moveToVault({ commit, dispatch }, vault) {
-      api.post('vaults', vault)
+    moveToVault({ commit, dispatch }, vaultkeep) {
+      debugger
+      api.post('vaultkeeps', vaultkeep)
         .then(res => {
           console.log('res to create vault: ', res)
           dispatch('authenticate')

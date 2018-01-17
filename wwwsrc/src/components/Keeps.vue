@@ -15,7 +15,7 @@
             <v-menu offset-y>
               <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
               <v-list>
-                <v-list-tile v-for="vault in vaults" :key="vault.name" @click="moveToVault(keep)">
+                <v-list-tile v-for="vault in vaults" :key="vault.name" @click="moveToVault(keep, vault)">
                   <v-list-tile-title>{{ vault.name }}</v-list-tile-title>
                 </v-list-tile>
               </v-list>
@@ -56,6 +56,9 @@
     keeps() {
         return this.$store.state.keeps
     },
+    activeUser() {
+        return this.$store.state.activeUser
+      }
     },
     methods: {
       deleteKeep(keep) {
@@ -65,14 +68,16 @@
         console.log('get vault in compnent')
         this.$store.dispatch('getVault', id)
       },
-      moveToVault(keep) {
+      moveToVault(keep, vault) {
         debugger
-        this.newVaultKeep.userid = this.activeUser.id
-        this.$store.dispatch('moveToVault', this.newVault)
+        this.newVaultKeep.UserId = this.activeUser.id
+        this.newVaultKeep.KeepId = keep.id
+        this.newVaultKeep.VaultId = vault.id
+        this.$store.dispatch('moveToVault', this.newVaultKeep)
         this.newVaultKeep = {
           VaultId: '',
           UserId: '',
-          keepId: '',
+          KeepId: '',
         }
       },
       mouseOver: function(){
