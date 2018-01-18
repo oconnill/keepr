@@ -1,31 +1,30 @@
 <template>
     <div class="row">
 
-    <v-form v-if="loginFormActive" v-model="valid" @submit.prevent="submitLogin()">
-        <v-text-field label="E-mail" v-model="login.email" :rules="emailRules" :counter="10"></v-text-field>
-        <v-text-field label="Password" v-model="login.password" :rules="passwordRules" type="password"></v-text-field>
-        <div>
-            <v-btn type="submit" flat>Login</v-btn>
-        </div>
-        <div>
-            <v-btn @click="toggleFormState" type="button" flat>Signup</v-btn>
-        </div>
-    </v-form>
-    <v-form v-else="loginFormActive" v-model="valid" @submit.prevent="submitRegister()">
-        <v-text-field label="Name" v-model="register.username" :rules="nameRules" :counter="10" required></v-text-field>
-        <v-text-field label="E-mail" v-model="register.email" :rules="emailRules" required></v-text-field>
-        <v-text-field type="password" label="Password" v-model="register.password" :rules="passwordRules" :counter="4" required></v-text-field>
-        <div>
-            <v-btn type="submit" flat>Submit</v-btn>
-        </div>
-        <div>
+        <v-form v-if="loginFormActive" v-model="valid" @submit.prevent="submitLogin()">
+            <v-text-field label="E-mail" v-model="login.email" :rules="emailRules" :counter="10"></v-text-field>
+            <v-text-field label="Password" v-model="login.password" :rules="passwordRules" type="password"></v-text-field>
+            <div>
+                <v-btn type="submit" flat>Login</v-btn>
+            </div>
+            <div>
+                <v-btn @click="toggleFormState" type="button" flat>Signup</v-btn>
+            </div>
+        </v-form>
+        <v-form v-else="loginFormActive" v-model="valid" @submit.prevent="submitRegister()">
+            <v-text-field label="Name" v-model="register.username" :rules="nameRules" :counter="10" required></v-text-field>
+            <v-text-field label="E-mail" v-model="register.email" :rules="emailRules" required></v-text-field>
+            <v-text-field type="password" label="Password" v-model="register.password" :rules="passwordRules" :counter="4" required></v-text-field>
+            <div>
+                <v-btn type="submit" flat>Submit</v-btn>
+            </div>
+            <div>
 
-        </div>
-    </v-form>
+            </div>
+        </v-form>
 
-    <div>
-                <h2>KEEPS OF THE WORLD!!!</h2>
-            </v-flex>
+        <div>
+            <h2>KEEPS OF THE WORLD!!!</h2>
             <div v-for="keep in keeps">
                 <div class="col-xs-4">
                     <div>{{keep.name}}</div>
@@ -69,10 +68,10 @@
             }
         },
         mounted() {
-      // this.$store.dispatch('getVaults')
-      this.$store.dispatch('getAllKeeps')
-      // this.$store.dispatch('getActiveUser')
-    },
+            // this.$store.dispatch('getVaults')
+            this.$store.dispatch('getAllKeeps')
+            // this.$store.dispatch('getActiveUser')
+        },
         methods: {
             toggleFormState() {
                 this.loginFormActive = !this.loginFormActive

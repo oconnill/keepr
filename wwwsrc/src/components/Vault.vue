@@ -53,7 +53,7 @@
             }
         },
         computed: {
-            vault() {
+            vaults() {
                 return this.$store.state.activeVault
             },
             keeps() {

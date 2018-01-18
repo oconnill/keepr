@@ -86,8 +86,8 @@ var store = new vuex.Store({
         .then(res => {
           console.log('Response to logout: ', res)
           commit('setActiveUser', {})
-          commit('vaults', {})
-          commit('activeVaults', {})
+          // commit('vaults', {})
+          // commit('activeVaults', {})
           commit('keeps', [])
           router.push({ name: "Login" })
         })
@@ -141,8 +141,11 @@ var store = new vuex.Store({
         })
     },
     moveToVault({ commit, dispatch }, vaultkeep) {
-      debugger
-      var v = vaultkeep;
+      var v = {
+        VaultId: vaultkeep.VaultId,
+        UserId: vaultkeep.UserId,
+        keepId: vaultkeep.KeepId,
+      }
       api.post('vaultkeeps', v)
         .then(res => {
           console.log('res to create vault: ', res)
