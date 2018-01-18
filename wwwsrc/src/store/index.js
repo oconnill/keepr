@@ -190,17 +190,17 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    addLike({ commit, dispatch }, id) {
+    addLike({ commit, dispatch }, keep) {
 debugger
-      api.put('keeps/' + id)
-        .then(res => {
-          console.log('res to create keep: ', res)
-          dispatch('authenticate')
-        })
-        .catch(err => {
-          commit('handleError', err)
-        })
-    },
+      api.put('keeps/' + keep.id, keep)
+      .then(res => {
+        console.log('res to create keep: ', res)
+        dispatch('authenticate')
+      })
+      .catch(err => {
+        commit('handleError', err)
+      })
+  },
     deleteKeep({ commit, dispatch }, keep) {
       api.delete('keeps/' + keep.id)
         .then(res => {

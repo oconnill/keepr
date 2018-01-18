@@ -62,10 +62,11 @@ namespace API_Users.Repositories
         {
             return _db.QueryFirstOrDefault<Keep>($@"
                 UPDATE Keeps SET  
-                    Title = @Title,
-                    Image = @Image,
+                    Name = @Name,
+                    keepImage = @keepImage,
                     Description = @Description,
                     VaultID = @VaultId
+                    KeepCount = @KeepCount
                 WHERE Id = {id};
                 SELECT * FROM Keeps WHERE id = {id};", keep);
         }

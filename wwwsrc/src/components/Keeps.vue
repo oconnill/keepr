@@ -9,7 +9,7 @@
         <v-btn flat icon color="pink" @click="addLike(keep)">
             <v-icon>favorite</v-icon>
           </v-btn>
-          <div><h4>Likes: 22</h4></div>
+          <div><h4>Likes: {{keep.keepCount}}</h4></div>
       <div class="text-xs-center">
         <v-menu offset-y>
           <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
@@ -66,8 +66,8 @@
         this.$store.dispatch('deleteKeep', keep)
       },
       addLike(keep) {
-        debugger
-        this.$store.dispatch('addLike', keep.id, keep.keepCount++)
+        keep.keepCount++
+        this.$store.dispatch('addLike', keep)
       },
       getVault(id) {
         console.log('get vault in compnent')

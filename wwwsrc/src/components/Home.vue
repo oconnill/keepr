@@ -90,7 +90,7 @@
       createKeep() {
         this.newKeep.userid = this.activeUser.id
         this.$store.dispatch('createKeep', this.newKeep)
-        this.newVault = {
+        this.newKeep = {
           name: '',
           description: '',
           keepImage: '',
