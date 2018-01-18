@@ -57,7 +57,7 @@ namespace API_Users.Repositories
         public string FindByIdAndRemove(int id)
         {
             var success = _db.Execute($@"
-                DELETE FROM Keeps WHERE id = {id};", id);
+                DELETE FROM Vaults WHERE id = {id};", id);
             return success > 0 ? "success" : "umm that didnt work";
         }
 
