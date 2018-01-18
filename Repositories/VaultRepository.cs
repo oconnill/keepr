@@ -56,10 +56,10 @@ namespace API_Users.Repositories
 
         public string FindByIdAndRemove(int id)
         {
-            var success = _db.Execute(@"
-                DELETE FROM Vaults WHERE Id = @id
-            ", id);
+            var success = _db.Execute($@"
+                DELETE FROM Keeps WHERE id = {id};", id);
             return success > 0 ? "success" : "umm that didnt work";
         }
+
     }
 }

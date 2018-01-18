@@ -2,8 +2,8 @@
     <div class="row">
 
     <v-form v-if="loginFormActive" v-model="valid" @submit.prevent="submitLogin()">
-        <v-text-field label="E-mail" v-model="login.email" :rules="emailRules" :counter="10" required></v-text-field>
-        <v-text-field label="Password" v-model="login.password" :rules="passwordRules" required></v-text-field>
+        <v-text-field label="E-mail" v-model="login.email" :rules="emailRules" :counter="10"></v-text-field>
+        <v-text-field label="Password" v-model="login.password" :rules="passwordRules" type="password"></v-text-field>
         <div>
             <v-btn type="submit" flat>Login</v-btn>
         </div>

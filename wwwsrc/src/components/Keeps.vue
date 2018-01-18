@@ -6,8 +6,8 @@
       <div>{{keep.name}}</div>
 
         <img :src="keep.keepImage">
-        <v-btn flat icon color="pink" @click="addLike(keep)">
-            <v-icon>favorite</v-icon>
+        <v-btn flat icon color="white" @click="addLike(keep)">
+            <v-icon dark right>check_circle</v-icon>
           </v-btn>
           <div><h4>Likes: {{keep.keepCount}}</h4></div>
       <div class="text-xs-center">
@@ -74,6 +74,7 @@
         this.$store.dispatch('getVault', id)
       },
       moveToVault(keep, vault) {
+        debugger
         this.newVaultKeep.UserId = this.activeUser.id
         this.newVaultKeep.KeepId = keep.id
         this.newVaultKeep.VaultId = vault.id

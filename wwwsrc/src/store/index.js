@@ -58,6 +58,7 @@ var store = new vuex.Store({
         .then(res => {
           console.log('Response to addNewUser: ', res)
           commit('setActiveUser', res.data)
+          dispatch('authenticate')
           router.push({ name: "Home" })
         })
         .catch(err => {
@@ -140,7 +141,9 @@ var store = new vuex.Store({
         })
     },
     moveToVault({ commit, dispatch }, vaultkeep) {
-      api.post('vaultkeeps', vaultkeep)
+      debugger
+      var v = vaultkeep;
+      api.post('vaultkeeps', v)
         .then(res => {
           console.log('res to create vault: ', res)
           dispatch('authenticate')

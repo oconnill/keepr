@@ -9,7 +9,6 @@
             <img :src="keep.keepImage">
             <div class="text-xs-center">
                 <v-menu offset-y>
-                    <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
                     <v-list>
                         <v-list-tile v-for="vault in vaults" :key="vault.name" @click="moveToVault(keep, vault)">
                             <v-list-tile-title>{{ vault.name }}</v-list-tile-title>
