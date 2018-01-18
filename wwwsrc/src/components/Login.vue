@@ -19,7 +19,7 @@
             <v-btn type="submit" flat>Submit</v-btn>
         </div>
         <div>
-            <v-btn @click="logout()" type="button" flat>Logout</v-btn>
+
         </div>
     </v-form>
 

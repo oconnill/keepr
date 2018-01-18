@@ -35,7 +35,7 @@
   
   <style>
     body {
-      background: #334034;
+      background: grey;
       /*
       background: linear-gradient(rgba(51, 64, 52, 0.95), rgba(51, 64, 52, 0)), url("./assets/wood-texture.jpg") center no-repeat;
       background-size: cover;
@@ -48,8 +48,8 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-align: center;
-      color: red;
-      background-color: aqua;
+      color: white;
+      background-color: grey;
       margin-top: 60px;
       /*background: #334034;*/
     }

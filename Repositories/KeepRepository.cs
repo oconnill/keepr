@@ -65,7 +65,6 @@ namespace API_Users.Repositories
                     Name = @Name,
                     keepImage = @keepImage,
                     Description = @Description,
-                    VaultID = @VaultId
                     KeepCount = @KeepCount
                 WHERE Id = {id};
                 SELECT * FROM Keeps WHERE id = {id};", keep);

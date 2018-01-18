@@ -1,23 +1,25 @@
 <template>
 
     <div class="row">
-            <h3>Vault View</h3>
-            <div class="col-sm-3" v-for="keep in vkeeps">
-                <div>{{keep.name}}</div>
-                <img :src="keep.keepImage">
-                <div class="text-xs-center">
-                    <v-menu offset-y>
-                      <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
-                      <v-list>
+        <h3>Vault View</h3>
+
+        <div class="col-sm-3" v-for="keep in vkeeps">
+                
+            <div>{{keep.name}}</div>
+            <img :src="keep.keepImage">
+            <div class="text-xs-center">
+                <v-menu offset-y>
+                    <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
+                    <v-list>
                         <v-list-tile v-for="vault in vaults" :key="vault.name" @click="moveToVault(keep, vault)">
-                          <v-list-tile-title>{{ vault.name }}</v-list-tile-title>
+                            <v-list-tile-title>{{ vault.name }}</v-list-tile-title>
                         </v-list-tile>
-                      </v-list>
-                    </v-menu>
-                  </div>
-                <v-btn @click="deleteKeep(keep)" type="button" flat>Delete</v-btn>
+                    </v-list>
+                </v-menu>
             </div>
+            <v-btn @click="deleteKeep(keep)" type="button" flat>Delete</v-btn>
         </div>
+    </div>
 </template>
 
 <script>
@@ -44,8 +46,12 @@
                 this.$store.dispatch('removeKeep', keep)
             },
             deleteKeep(keep) {
-        this.$store.dispatch('deleteKeep', keep)
-      },
+                this.$store.dispatch('deleteKeep', keep)
+            },
+            deleteVault(vault) {
+                debugger
+                this.$store.dispatch('deleteVault', vault)
+            }
         },
         computed: {
             vault() {

@@ -58,7 +58,7 @@ var store = new vuex.Store({
         .then(res => {
           console.log('Response to addNewUser: ', res)
           commit('setActiveUser', res.data)
-          router.push({ name: "Keeps" })
+          router.push({ name: "Home" })
         })
         .catch(err => {
           commit('handleError', err)
@@ -191,10 +191,10 @@ var store = new vuex.Store({
         })
     },
     addLike({ commit, dispatch }, keep) {
-debugger
       api.put('keeps/' + keep.id, keep)
       .then(res => {
         console.log('res to create keep: ', res)
+        commit('setKeeps', res.data)
         dispatch('authenticate')
       })
       .catch(err => {
@@ -204,6 +204,17 @@ debugger
     deleteKeep({ commit, dispatch }, keep) {
       api.delete('keeps/' + keep.id)
         .then(res => {
+          dispatch('authenticate')
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    deleteVault({ commit, dispatch }, vault) {
+      debugger
+      api.delete('vaults/' + vault.id)
+        .then(res => {
+          console.log('Delete Vault: ', res)
           dispatch('authenticate')
         })
         .catch(err => {
