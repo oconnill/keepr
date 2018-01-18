@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="row">
+
     <v-form v-if="loginFormActive" v-model="valid" @submit.prevent="submitLogin()">
         <v-text-field label="E-mail" v-model="login.email" :rules="emailRules" :counter="10" required></v-text-field>
         <v-text-field label="Password" v-model="login.password" :rules="passwordRules" required></v-text-field>
@@ -21,15 +22,15 @@
             <v-btn @click="logout()" type="button" flat>Logout</v-btn>
         </div>
     </v-form>
+
     <div>
-            <v-flex xs12>
                 <h2>KEEPS OF THE WORLD!!!</h2>
             </v-flex>
             <div v-for="keep in keeps">
-                <v-flex xs4>
+                <div class="col-xs-4">
                     <div>{{keep.name}}</div>
                     <img :src="keep.keepImage">
-                </v-flex>
+                </div>
             </div>
         </div>
     </div>
@@ -84,7 +85,6 @@
                 }
             },
             submitRegister() {
-                debugger
                 this.$store.dispatch('addNewUser', this.register)
                 this.register = {
                     username: '',
@@ -93,7 +93,6 @@
                 }
             },
             logout() {
-                debugger
                 this.$store.dispatch('logout')
             }
         },

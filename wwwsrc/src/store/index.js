@@ -47,7 +47,6 @@ var store = new vuex.Store({
       state.keeps = data
     },
     setActiveVaultKeeps(state, data) {
-      debugger
       state.activeVaultKeeps = data
       console.log('VaultKeeps: ', state.activeUser)
     }
@@ -88,6 +87,7 @@ var store = new vuex.Store({
           commit('setActiveUser', {})
           commit('vaults', {})
           commit('activeVaults', {})
+          commit('keeps', [])
           router.push({ name: "Login" })
         })
         .catch(err => {
@@ -140,7 +140,6 @@ var store = new vuex.Store({
         })
     },
     moveToVault({ commit, dispatch }, vaultkeep) {
-      debugger
       api.post('vaultkeeps', vaultkeep)
         .then(res => {
           console.log('res to create vault: ', res)
@@ -191,10 +190,21 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
+    addLike({ commit, dispatch }, id) {
+debugger
+      api.put('keeps/' + id)
+        .then(res => {
+          console.log('res to create keep: ', res)
+          dispatch('authenticate')
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
     deleteKeep({ commit, dispatch }, keep) {
       api.delete('keeps/' + keep.id)
         .then(res => {
-          dispatch('getKeeps')
+          dispatch('authenticate')
         })
         .catch(err => {
           commit('handleError', err)
