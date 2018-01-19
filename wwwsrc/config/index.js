@@ -8,12 +8,12 @@ module.exports = {
   dev: {
 
     // Paths
-    // assetsSubDirectory: '../../wwwroot/static',
-    // assetsPublicPath: '../../wwwroot/',
-    // proxyTable: {},
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsSubDirectory: '../../wwwroot/static',
+    assetsPublicPath: '../../wwwroot/',
     proxyTable: {},
+    // assetsSubDirectory: 'static',
+    // assetsPublicPath: '/',
+    // proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
