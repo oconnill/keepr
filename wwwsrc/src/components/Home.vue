@@ -23,8 +23,12 @@
   </div>
   <div class="row">
 <div class="col-sm-12">
+    <v-btn @click="getAll()" type="submit" flat>See All Keeps</v-btn>
+    
+
     <vaults></vaults>
   </div>
+  <all-keeps></all-keeps>
     <keeps></keeps>
     <vault></vault>
   </div>
@@ -35,6 +39,7 @@
   import Vaults from './Vaults'
   import Keeps from './Keeps'
   import Vault from './Vault'
+  import AllKeeps from './AllKeeps'
   export default {
     name: 'Home',
     data() {
@@ -57,11 +62,13 @@
       Vaults,
       Keeps,
       Vault,
+      AllKeeps,
     },
     mounted() {
       // this.$store.dispatch('getVaults')
-      // this.$store.dispatch('getKeeps')
+
       // this.$store.dispatch('getActiveUser')
+      // this.$store.dispatch('getAllKeeps')
     },
     computed: {
       vaults() {
@@ -73,6 +80,9 @@
       activeUser() {
         return this.$store.state.activeUser
       },
+      keeps() {
+                return this.$store.state.keeps
+            }
       // lists() {
       //   return this.$store.state.lists
       // },
@@ -104,6 +114,10 @@
       getVault(id) {
         console.log('get vault in component')
         this.$store.dispatch('getVault', id)
+      },
+      getAll() {
+        debugger
+        router.push({ name: "AllKeeps" })
       }
     }
   }
