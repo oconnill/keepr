@@ -4,51 +4,6 @@
     <h2>My Keeps</h2>
     <div class="col-sm-6" v-for="keep in keeps">
 
-
-      <!-- <div>{{keep.name}}</div>
-
-      <img :src="keep.keepImage">
-      <v-btn flat icon color="white" @click="addLike(keep)">
-        <v-icon dark right>check_circle</v-icon>
-      </v-btn>
-      <div>
-        <h4>Views: {{keep.keepCount}}</h4>
-      </div>
-      <div class="text-xs-center">
-        <v-menu offset-y>
-          <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
-          <v-list>
-            <v-list-tile v-for="vault in vaults" :key="vault.name" @click="moveToVault(keep, vault)">
-              <v-list-tile-title>{{ vault.name }}</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-
-        </v-menu>
-      </div>
-      <v-btn @click="deleteKeep(keep)" type="button" flat>Delete</v-btn> -->
-      <!-- <div class="thumbnail keep-content">
-        <img :src="keep.keepImage" alt="image" class="image" style="height:500px; width:auto">
-        <div class="caption">
-          <v-btn flat icon color="white" @click="addLike(keep)">
-            <v-icon dark right>check_circle</v-icon>
-          </v-btn>
-        </div>
-        <div class="hover-buttons overlay">
-          <div>
-            <h4>Views: {{keep.keepCount}}</h4>
-          </div>
-          <v-btn flat icon color="white" @click="addLike(keep)">
-            <v-icon dark right>check_circle</v-icon>
-          </v-btn>
-          <v-menu offset-y>
-            <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
-            <v-list>
-              <v-list-tile v-for="vault in vaults" :key="vault.name" @click="moveToVault(keep, vault)">
-                <v-list-tile-title>{{ vault.name }}</v-list-tile-title>
-
-              </v-list-tile>
-            </v-list>
-          </v-menu> -->
        
               <h3 class="title">{{keep.name}}</h3>
               <div class="content">
@@ -58,12 +13,15 @@
                       <v-btn flat icon color="white" @click="addLike(keep)">
                           <v-icon dark right>check_circle</v-icon>
                         </v-btn>
+                        <v-btn flat icon color="white">
+                            <h5>SHARE</h5>
+                          </v-btn>
                         <h4>Views: {{keep.keepCount}}</h4>
                         <v-menu offset-y>
                             <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
                             <v-list>
                               <v-list-tile v-for="vault in vaults" :key="vault.name" @click="moveToVault(keep, vault)">
-                                  
+
                                 <v-list-tile-title>{{ vault.name }}</v-list-tile-title>
                                 
                               </v-list-tile>
@@ -72,47 +30,6 @@
                   </div>
               </div>
      
-
-
-
-          <!-- <div class="thumbnail keep-content">
-            <img :src="keep.keepImage" alt="image" class="image" style="height:500px; width:auto">
-            <div class="caption">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">HTML</a></li>
-                      <li><a href="#">CSS</a></li>
-                      <li><a href="#">JavaScript</a></li>
-                    </ul>
-                  </div>
-
-                <i class="fa fa-share"></i> (coming soon)
-            </div>
-            <div class="hover-buttons overlay">
-                <v-btn flat icon color="white" @click="addLike(keep)">
-                    <v-icon dark right>check_circle</v-icon>
-                  </v-btn>
-                  <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                      <span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">HTML</a></li>
-                        <li><a href="#">CSS</a></li>
-                        <li><a href="#">JavaScript</a></li>
-                      </ul>
-                    </div> -->
-
-                  <!-- <v-menu offset-y>
-                      <v-btn color="primary" dark slot="activator">Add to Vault</v-btn>
-                      <v-list>
-                        <v-list-tile v-for="vault in vaults" :key="vault.name" @click="moveToVault(keep, vault)">
-                          <v-list-tile-title>{{ vault.name }}</v-list-tile-title>
-          
-                        </v-list-tile>
-                      </v-list>
-                    </v-menu> -->
             </div>
           </div>
 
@@ -198,31 +115,6 @@
     height: 200px;
     width: 200px;
   }
-/* 
-  .keep-content:hover .overlay {
-    opacity: .9;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-  }
-
-  .hover-buttons {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    font-size: 30px;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  } */
 
   @import url(https://fonts.googleapis.com/css?family=Raleway);
 
